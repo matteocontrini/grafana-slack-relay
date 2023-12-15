@@ -148,4 +148,5 @@ def handle_unhandled_exception(exc_type, exc_value, exc_traceback):
 sys.excepthook = handle_unhandled_exception
 
 if __name__ == '__main__':
-    app.run()
+    port = int(os.environ.get('PORT', 5000))
+    app.run(port=port)
