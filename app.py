@@ -23,14 +23,14 @@ logging.basicConfig(
 def grafana_webhook():
     data = request.json
 
-    logging.info(f'Received webhook: {json_serialize(data)}')
+    logging.info(f'Received webhook: {json_serialize(data)}.')
 
     attachments = [format_slack_attachment(alert) for alert in data['alerts']]
     message = {
         'attachments': attachments
     }
 
-    logging.info(f'Sending slack message: {json_serialize(message)}')
+    logging.info(f'Sending slack message: {json_serialize(message)}.')
 
     response = requests.post(SLACK_WEBHOOK_URL, json=message)
 
